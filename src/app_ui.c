@@ -137,7 +137,9 @@ void light_blink_stop(void)
  */
 void buttonKeepPressed(u8 btNum){
 	if(btNum == VK_SW1){
+        printf("buttonKeepPressed %d\r\n", btNum);
 		g_sensorAppCtx.state = APP_FACTORY_NEW_DOING;
+        printf("Resetting zigbee stack...\r\n");
 		zb_factoryReset();
 		SYSTEM_RESET();
 	}else if(btNum == VK_SW2){
@@ -146,6 +148,7 @@ void buttonKeepPressed(u8 btNum){
 }
 
 void buttonShortPressed(u8 btNum){
+    printf("buttonShortPressed %d\r\n", btNum);
 	if(btNum == VK_SW1){
 		if(zb_isDeviceJoinedNwk()){
 //			epInfo_t dstEpInfo;
